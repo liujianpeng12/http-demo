@@ -47,6 +47,11 @@ public class CoffeeController {
         return coffee;
     }
 
+    @GetMapping("/findById")
+    public Coffee findById(String id) {
+        return Coffee.builder().id(id).name("abc").price(new BigDecimal(100)).build();
+    }
+
     /**
      * 若传参数包函name则调用
      * params + (form-data / form-urlencoded)

@@ -97,6 +97,28 @@ public class GetTest {
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * 接收不到参数id
+     */
+    @Test
+    public void getByRequestParam5() {
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("id", "123");
+        Coffee result = restTemplate.getForObject("http://localhost:8000/coffee/findById", Coffee.class, map);
+        System.out.println(result);//输出 Coffee(id=1, name=[moca], price=20)
+    }
+
+
+    @Test
+    public void getByRequestParam6() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", "5");
+        Coffee result = restTemplate.getForObject("http://localhost:8000/coffee/findById", Coffee.class, map);
+        System.out.println(result);//输出 Coffee(id=1, name=[moca], price=20)
+    }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------
+
     @Test
     public void getByRequestObject() {
         Coffee result = restTemplate.getForObject("http://localhost:8000/coffee/find?id=1&name=mocha&price=100", Coffee.class);
